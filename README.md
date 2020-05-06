@@ -9,7 +9,14 @@
 * 启动  brew services start elasticsearch   默认端口9200 需要配置为全网段 0.0.0.0  具体百度吧
 
 
-* brew services start kibana   默认端口5601
+* brew services start kibana   默认端口5601  将配置文件修改用以关联到elasticsearch  Mac的目录位置/usr/local/Cellar/kibana/6.8.8/config/kibana.yml
+
+```
+	server.host: "0.0.0.0"
+	server.port: 5601
+	elasticsearch.hosts: ["http://localhost:9200"]
+	kibana.index: ".kibana"
+```
 
 
 * logstash因为需要手动配置新的配置文件，没有有brew启动  我的logstash 安装目录/usr/local/Cellar/logstash/7.6.2
